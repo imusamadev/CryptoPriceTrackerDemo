@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CryptoListView: View {
+    @StateObject private var viewModel = CryptoListViewModel()
+    
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -16,7 +18,7 @@ struct CryptoListView: View {
                     PortfolioSummaryView()
                     CoinCardsView()
                     RewardsBannerView()
-                    MarketStatisticsView()
+                    MarketStatisticsView(viewModel: viewModel)
                 }
             }
             CustomTabBar()
@@ -88,14 +90,15 @@ struct CryptoListView: View {
     
     // MARK: - Coin Cards
     struct CoinCardsView: View {
+        
         var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            CoinCard(name: "Bitcoin", symbol: "BTC", value: "$6780", growth: "+11.75%", color: Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.12), imageName: "bitcoin")
-                            CoinCard(name: "Ethereum", symbol: "ETH", value: "$1478.10", growth: "+4.75%", color: .blue, imageName: "bitcoin")
-                        }
-                        .padding(.horizontal)
-                    }
+                HStack(spacing: 16) {
+                    CoinCard(name: "Bitcoin", symbol: "BTC", value: "$6780", growth: "+11.75%", color: Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.12), imageName: "bitcoin")
+                    CoinCard(name: "Ethereum", symbol: "ETH", value: "$1478.10", growth: "+4.75%", color: .blue, imageName: "bitcoin")
+                }
+                .padding(.horizontal)
+            }
         }
     }
     
@@ -176,6 +179,7 @@ struct CryptoListView: View {
     // MARK: - Market Statistics
     struct MarketStatisticsView: View {
         let filters = ["24 hrs", "Hot", "Profit", "Rising", "Loss", "Top Gain"]
+        @ObservedObject var viewModel: CryptoListViewModel
         
         var body: some View {
             VStack(alignment: .leading, spacing: 16) {
@@ -199,9 +203,15 @@ struct CryptoListView: View {
                 }
                 
                 VStack(spacing: 20) {
-                    MarketCoinRow(name: "Cardano", symbol: "ADA", value: "$123.77", growth: "+11.75%", color: .blue)
-                    MarketCoinRow(name: "Uniswap", symbol: "LTC", value: "$16.96", growth: "-11.75%", color: .pink)
-                    MarketCoinRow(name: "Tether", symbol: "USDT", value: "$0.98", growth: "0.00%", color: .green)
+                    ForEach(viewModel.cryptoCurrencies) { coin in
+                        MarketCoinRow(
+                            name: coin.name,
+                            symbol: coin.symbol.uppercased(),
+                            value: String(format: "$%.2f", coin.currentPrice),
+                            growth: String(format: "%.2f%%", coin.priceChangePercentage24h),
+                            color: .blue // You can set this based on coin or logic
+                        )
+                    }
                 }
             }
             .padding()

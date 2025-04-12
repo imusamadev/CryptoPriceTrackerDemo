@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		048C64942DAB1F26007A1545 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 048C64932DAB1F26007A1545 /* RxCocoa */; };
+		048C64962DAB1F26007A1545 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 048C64952DAB1F26007A1545 /* RxSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		0406E6A82DAA545400A87CD8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048C64962DAB1F26007A1545 /* RxSwift in Frameworks */,
+				048C64942DAB1F26007A1545 /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +119,8 @@
 			);
 			name = CryptoPriceTrackerDemo;
 			packageProductDependencies = (
+				048C64932DAB1F26007A1545 /* RxCocoa */,
+				048C64952DAB1F26007A1545 /* RxSwift */,
 			);
 			productName = CryptoPriceTrackerDemo;
 			productReference = 0406E6972DAA545000A87CD8 /* CryptoPriceTrackerDemo.app */;
@@ -195,6 +204,9 @@
 			);
 			mainGroup = 0406E68E2DAA545000A87CD8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0406E6982DAA545000A87CD8 /* Products */;
 			projectDirPath = "";
@@ -552,6 +564,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		048C64932DAB1F26007A1545 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		048C64952DAB1F26007A1545 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0406E68F2DAA545000A87CD8 /* Project object */;
 }
