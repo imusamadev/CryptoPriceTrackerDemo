@@ -18,7 +18,6 @@ struct CryptoListView: View {
                     RewardsBannerView()
                     MarketStatisticsView()
                 }
-                .padding(.horizontal)
             }
             CustomTabBar()
         }
@@ -90,10 +89,13 @@ struct CryptoListView: View {
     // MARK: - Coin Cards
     struct CoinCardsView: View {
         var body: some View {
-            HStack(spacing: 16) {
-                CoinCard(name: "Bitcoin", symbol: "BTC", value: "$6780", growth: "+11.75%", color: Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.12),imageName: "bitcoin")
-                CoinCard(name: "Ethereum", symbol: "BTC", value: "$1478.10", growth: "+4.75%", color: .blue, imageName: "bitcoin")
-            }
+            ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            CoinCard(name: "Bitcoin", symbol: "BTC", value: "$6780", growth: "+11.75%", color: Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.12), imageName: "bitcoin")
+                            CoinCard(name: "Ethereum", symbol: "ETH", value: "$1478.10", growth: "+4.75%", color: .blue, imageName: "bitcoin")
+                        }
+                        .padding(.horizontal)
+                    }
         }
     }
     
