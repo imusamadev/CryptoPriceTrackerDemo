@@ -39,7 +39,7 @@ struct WelcomeView: View {
 
                     Spacer()
 
-                    NavigationLink(destination: ContentView()) {
+                    NavigationLink(destination: CryptoListView()) {
                         HStack {
                             Text("Get Started")
                                 .font(.headline)
