@@ -18,7 +18,7 @@ struct WelcomeView: View {
                     Image("phone")
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: 469) // Try to keep it flexible for smaller screens
+                        .frame(maxWidth: 469)
                         .padding(.top, 30)
 
                     VStack(alignment: .leading) {
