@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		0406E6A82DAA545400A87CD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0406E68F2DAA545000A87CD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0406E6962DAA545000A87CD8;
+			remoteInfo = CryptoPriceTrackerDemo;
+		};
+		0406E6B22DAA545400A87CD8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0406E68F2DAA545000A87CD8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0406E6962DAA545000A87CD8;
+			remoteInfo = CryptoPriceTrackerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0406E6972DAA545000A87CD8 /* CryptoPriceTrackerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoPriceTrackerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0406E6A72DAA545400A87CD8 /* CryptoPriceTrackerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoPriceTrackerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0406E6B12DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoPriceTrackerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0406E6992DAA545000A87CD8 /* CryptoPriceTrackerDemo */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CryptoPriceTrackerDemo;
+			sourceTree = "<group>";
+		};
+		0406E6AA2DAA545400A87CD8 /* CryptoPriceTrackerDemoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CryptoPriceTrackerDemoTests;
+			sourceTree = "<group>";
+		};
+		0406E6B42DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = CryptoPriceTrackerDemoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0406E6942DAA545000A87CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6A42DAA545400A87CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6AE2DAA545400A87CD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0406E68E2DAA545000A87CD8 = {
+			isa = PBXGroup;
+			children = (
+				0406E6992DAA545000A87CD8 /* CryptoPriceTrackerDemo */,
+				0406E6AA2DAA545400A87CD8 /* CryptoPriceTrackerDemoTests */,
+				0406E6B42DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests */,
+				0406E6982DAA545000A87CD8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0406E6982DAA545000A87CD8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0406E6972DAA545000A87CD8 /* CryptoPriceTrackerDemo.app */,
+				0406E6A72DAA545400A87CD8 /* CryptoPriceTrackerDemoTests.xctest */,
+				0406E6B12DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0406E6962DAA545000A87CD8 /* CryptoPriceTrackerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0406E6BB2DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemo" */;
+			buildPhases = (
+				0406E6932DAA545000A87CD8 /* Sources */,
+				0406E6942DAA545000A87CD8 /* Frameworks */,
+				0406E6952DAA545000A87CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0406E6992DAA545000A87CD8 /* CryptoPriceTrackerDemo */,
+			);
+			name = CryptoPriceTrackerDemo;
+			packageProductDependencies = (
+			);
+			productName = CryptoPriceTrackerDemo;
+			productReference = 0406E6972DAA545000A87CD8 /* CryptoPriceTrackerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0406E6A62DAA545400A87CD8 /* CryptoPriceTrackerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0406E6BE2DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemoTests" */;
+			buildPhases = (
+				0406E6A32DAA545400A87CD8 /* Sources */,
+				0406E6A42DAA545400A87CD8 /* Frameworks */,
+				0406E6A52DAA545400A87CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0406E6A92DAA545400A87CD8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0406E6AA2DAA545400A87CD8 /* CryptoPriceTrackerDemoTests */,
+			);
+			name = CryptoPriceTrackerDemoTests;
+			packageProductDependencies = (
+			);
+			productName = CryptoPriceTrackerDemoTests;
+			productReference = 0406E6A72DAA545400A87CD8 /* CryptoPriceTrackerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0406E6B02DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0406E6C12DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemoUITests" */;
+			buildPhases = (
+				0406E6AD2DAA545400A87CD8 /* Sources */,
+				0406E6AE2DAA545400A87CD8 /* Frameworks */,
+				0406E6AF2DAA545400A87CD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0406E6B32DAA545400A87CD8 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				0406E6B42DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests */,
+			);
+			name = CryptoPriceTrackerDemoUITests;
+			packageProductDependencies = (
+			);
+			productName = CryptoPriceTrackerDemoUITests;
+			productReference = 0406E6B12DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0406E68F2DAA545000A87CD8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					0406E6962DAA545000A87CD8 = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					0406E6A62DAA545400A87CD8 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 0406E6962DAA545000A87CD8;
+					};
+					0406E6B02DAA545400A87CD8 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 0406E6962DAA545000A87CD8;
+					};
+				};
+			};
+			buildConfigurationList = 0406E6922DAA545000A87CD8 /* Build configuration list for PBXProject "CryptoPriceTrackerDemo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0406E68E2DAA545000A87CD8;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0406E6982DAA545000A87CD8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0406E6962DAA545000A87CD8 /* CryptoPriceTrackerDemo */,
+				0406E6A62DAA545400A87CD8 /* CryptoPriceTrackerDemoTests */,
+				0406E6B02DAA545400A87CD8 /* CryptoPriceTrackerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0406E6952DAA545000A87CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6A52DAA545400A87CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6AF2DAA545400A87CD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0406E6932DAA545000A87CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6A32DAA545400A87CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0406E6AD2DAA545400A87CD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0406E6A92DAA545400A87CD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0406E6962DAA545000A87CD8 /* CryptoPriceTrackerDemo */;
+			targetProxy = 0406E6A82DAA545400A87CD8 /* PBXContainerItemProxy */;
+		};
+		0406E6B32DAA545400A87CD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0406E6962DAA545000A87CD8 /* CryptoPriceTrackerDemo */;
+			targetProxy = 0406E6B22DAA545400A87CD8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0406E6B92DAA545400A87CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0406E6BA2DAA545400A87CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0406E6BC2DAA545400A87CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptoPriceTrackerDemo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0406E6BD2DAA545400A87CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CryptoPriceTrackerDemo/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0406E6BF2DAA545400A87CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoPriceTrackerDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CryptoPriceTrackerDemo";
+			};
+			name = Debug;
+		};
+		0406E6C02DAA545400A87CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CryptoPriceTrackerDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CryptoPriceTrackerDemo";
+			};
+			name = Release;
+		};
+		0406E6C22DAA545400A87CD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CryptoPriceTrackerDemo;
+			};
+			name = Debug;
+		};
+		0406E6C32DAA545400A87CD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JobTask.CryptoPriceTrackerDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CryptoPriceTrackerDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0406E6922DAA545000A87CD8 /* Build configuration list for PBXProject "CryptoPriceTrackerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0406E6B92DAA545400A87CD8 /* Debug */,
+				0406E6BA2DAA545400A87CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0406E6BB2DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0406E6BC2DAA545400A87CD8 /* Debug */,
+				0406E6BD2DAA545400A87CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0406E6BE2DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0406E6BF2DAA545400A87CD8 /* Debug */,
+				0406E6C02DAA545400A87CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0406E6C12DAA545400A87CD8 /* Build configuration list for PBXNativeTarget "CryptoPriceTrackerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0406E6C22DAA545400A87CD8 /* Debug */,
+				0406E6C32DAA545400A87CD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0406E68F2DAA545000A87CD8 /* Project object */;
+}
