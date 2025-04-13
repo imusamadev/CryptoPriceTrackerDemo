@@ -11,19 +11,23 @@ struct CryptoListView: View {
     @StateObject private var viewModel = CryptoListViewModel()
     
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 24) {
-                    TopBarView()
-                    PortfolioSummaryView()
-                    CoinCardsView()
-                    RewardsBannerView()
-                    MarketStatisticsView(viewModel: viewModel)
+        NavigationStack {
+            VStack(spacing: 0) {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 24) {
+                        TopBarView()
+                        PortfolioSummaryView()
+                        CoinCardsView()
+                        RewardsBannerView()
+                        MarketStatisticsView(viewModel: viewModel)
+                    }
                 }
+                CustomTabBar()
             }
-            CustomTabBar()
+            .background(Color.black.edgesIgnoringSafeArea(.all))
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(true)
         }
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
     
     // MARK: - Top Bar
@@ -204,13 +208,15 @@ struct CryptoListView: View {
                 
                 VStack(spacing: 20) {
                     ForEach(viewModel.cryptoCurrencies) { coin in
-                        MarketCoinRow(
-                            name: coin.name,
-                            symbol: coin.symbol.uppercased(),
-                            value: String(format: "$%.2f", coin.currentPrice),
-                            growth: String(format: "%.2f%%", coin.priceChangePercentage24h),
-                            color: .blue // You can set this based on coin or logic
-                        )
+                        NavigationLink(destination: CoinDetailView(coinId: coin.id)) {
+                                    MarketCoinRow(
+                                        name: coin.name,
+                                        symbol: coin.symbol.uppercased(),
+                                        value: String(format: "$%.2f", coin.currentPrice),
+                                        growth: String(format: "%.2f%%", coin.priceChangePercentage24h),
+                                        color: .blue
+                                    )
+                                }
                     }
                 }
             }

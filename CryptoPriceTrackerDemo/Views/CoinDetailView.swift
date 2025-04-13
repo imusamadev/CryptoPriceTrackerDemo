@@ -6,23 +6,48 @@
 //
 
 import SwiftUI
+import Charts
 
 struct CoinDetailView: View {
+    
+    @StateObject var viewModel = CoinDetailViewModel()
+    var coinId: String
+    
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView{
-                VStack(alignment: .leading) {
-                    TopBarView()
-                    CoinInfoView()
-                    CoinStatsView()
-                    ChartFiltersView()
-                    CoinChartView()
-                    MinMaxPriceView()
+            if viewModel.isLoading {
+                ProgressView("Loading...")
+                    .foregroundColor(.white)
+            } else if let coin = viewModel.coinDetail {
+                ScrollView{
+                    VStack(alignment: .leading) {
+                        TopBarView()
+                        CoinInfoView(coin: coin)
+                        CoinStatsView(coin: coin)
+                        ChartFiltersView()
+                        if viewModel.isChartLoading {
+                            ProgressView("Loading Chart...")
+                                .foregroundColor(.white)
+                        } else {
+                            CoinChartView(prices: viewModel.historicalPrices)
+                        }
+                        MinMaxPriceView()
+                    }
                 }
+                TransferButtonView()
             }
-            TransferButtonView()
+            else if let error = viewModel.errorMessage {
+                Text("Error: \(error)")
+                    .foregroundColor(.red)
+            }
+        }
+        .onAppear {
+            viewModel.loadCoinDetail(id: coinId)
+            viewModel.loadHistoricalPrices(id: coinId)
         }
         .background(Color.black.edgesIgnoringSafeArea(.all))
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
@@ -53,48 +78,53 @@ struct TopBarView: View{
 }
 
 struct CoinInfoView: View {
+    let coin: CoinDetail
+    
     var body: some View {
         HStack(spacing: 16) {
-            Image("cardano") // Replace with real asset name
+            Image(coin.id) // Ensure image exists in Assets with the coin id
                 .resizable()
                 .frame(width: 40, height: 40)
                 .clipShape(Circle())
-
+            
             VStack(alignment: .leading) {
-                Text("Cardano / ADA")
+                Text("\(coin.name) / \(coin.symbol.uppercased())")
                     .foregroundColor(.white)
                     .font(.headline)
-
-                Text("$123.77")
+                
+                Text("$\(String(format: "%.2f", coin.marketData.currentPrice["usd"] ?? 0))")
                     .foregroundColor(.white)
                     .font(.system(size: 32, weight: .bold))
             }
-
+            
             Spacer()
-
-            Text("▲ 11.75%")
+            
+            let change = coin.marketData.priceChangePercentage24H
+            let isPositive = (change ?? 0) >= 0
+            Text("\(isPositive ? "▲" : "▼") \(String(format: "%.2f", abs(change ?? 0)))%")
                 .font(.subheadline)
-                .foregroundColor(.green)
+                .foregroundColor(isPositive ? .green : .red)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 6)
-                .background(Color.green.opacity(0.2))
+                .background((isPositive ? Color.green : Color.red).opacity(0.2))
                 .clipShape(Capsule())
         }
         .padding(.horizontal)
-
-        Divider()
-            .background(Color.white.opacity(1))
+        
+        Divider().background(Color.white.opacity(1))
     }
 }
 
 struct CoinStatsView: View {
+    let coin: CoinDetail
+    
     var body: some View {
         HStack {
             VStack {
                 Text("POPULARITY")
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("#61")
+                Text("#\(String(describing: coin.marketCapRank))")
                     .foregroundColor(.white)
                     .font(.subheadline)
             }
@@ -103,7 +133,7 @@ struct CoinStatsView: View {
                 Text("MARKET CAP")
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("$32.4 b")
+                Text("$\(formatNumber(coin.marketData.marketCap["usd"]))")
                     .foregroundColor(.white)
                     .font(.subheadline)
             }
@@ -112,21 +142,31 @@ struct CoinStatsView: View {
                 Text("VOLUME")
                     .font(.caption)
                     .foregroundColor(.gray)
-                Text("$20.6 b")
+                Text("$\(formatNumber(coin.marketData.totalVolume["usd"]))")
                     .foregroundColor(.white)
                     .font(.subheadline)
             }
         }
         .padding(.horizontal)
-
-        Divider()
-            .background(Color.white.opacity(1))
+        
+        Divider().background(Color.white.opacity(1))
+    }
+    
+    private func formatNumber(_ number: Double?) -> String {
+        guard let number = number else { return "--" }
+        if number >= 1_000_000_000 {
+            return String(format: "%.1f b", number / 1_000_000_000)
+        } else if number >= 1_000_000 {
+            return String(format: "%.1f m", number / 1_000_000)
+        } else {
+            return String(format: "%.0f", number)
+        }
     }
 }
 
 struct ChartFiltersView: View {
     let periods = ["1H", "1D", "1W", "1M", "1Y", "All"]
-
+    
     var body: some View {
         HStack(spacing: 10) {
             ForEach(periods, id: \.self) { period in
@@ -143,16 +183,35 @@ struct ChartFiltersView: View {
 }
 
 struct CoinChartView: View {
+    var prices: [HistoricalPrice]
+
     var body: some View {
         ZStack(alignment: .bottom) {
             RoundedRectangle(cornerRadius: 20)
                 .fill(LinearGradient(colors: [.black, .gray], startPoint: .top, endPoint: .bottom))
                 .frame(height: 220)
 
-            LineChartMock()
-                .stroke(Color.blue, lineWidth: 2)
+            if prices.isEmpty {
+                Text("No data available")
+                    .foregroundColor(.white)
+            } else {
+                Chart {
+                    ForEach(prices) { price in
+                        LineMark(
+                            x: .value("Date", price.date),
+                            y: .value("Price", price.price)
+                        )
+                        .foregroundStyle(Color.green)
+                        .interpolationMethod(.monotone)
+                    }
+                }
+                .chartXAxis(.hidden)
+                .chartYAxis {
+                    AxisMarks(position: .leading)
+                }
                 .frame(height: 365)
                 .padding(.horizontal)
+            }
         }
         .padding(.horizontal)
     }
@@ -199,19 +258,19 @@ struct LineChartMock: Shape {
         var path = Path()
         let points: [CGFloat] = [0.1, 0.6, 0.3, 0.9, 0.2, 0.8, 0.4, 0.7, 0.1]
         let step = rect.width / CGFloat(points.count - 1)
-
+        
         path.move(to: CGPoint(x: 0, y: rect.height * (1 - points[0])))
-
+        
         for i in 1..<points.count {
             path.addLine(to: CGPoint(x: CGFloat(i) * step, y: rect.height * (1 - points[i])))
         }
-
+        
         return path
     }
 }
 
 struct CoinDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinDetailView()
+        CoinDetailView(coinId: "0")
     }
 }
