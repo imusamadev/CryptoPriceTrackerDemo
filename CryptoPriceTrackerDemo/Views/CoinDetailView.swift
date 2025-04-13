@@ -10,6 +10,7 @@ import Charts
 
 struct CoinDetailView: View {
     
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = CoinDetailViewModel()
     var coinId: String
     
@@ -21,7 +22,9 @@ struct CoinDetailView: View {
             } else if let coin = viewModel.coinDetail {
                 ScrollView{
                     VStack(alignment: .leading) {
-                        TopBarView()
+                        TopBarView(onBack: {
+                            dismiss()
+                        })
                         CoinInfoView(coin: coin)
                         CoinStatsView(coin: coin)
                         ChartFiltersView()
@@ -52,12 +55,16 @@ struct CoinDetailView: View {
 }
 
 struct TopBarView: View{
+    
+    var onBack: () -> Void
+    
     var body: some View{
         
         // Header
         HStack {
             Button(action: {
                 // Back action
+                onBack()
             }) {
                 Image(systemName: "arrow.left")
                     .foregroundColor(.green)
