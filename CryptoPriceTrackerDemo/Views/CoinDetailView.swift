@@ -12,7 +12,14 @@ struct CoinDetailView: View {
     
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = CoinDetailViewModel()
+    @ObservedObject var favoritesManager: FavoritesManager
+    
     var coinId: String
+    
+    init(coinId: String, favoritesManager: FavoritesManager = FavoritesManager.shared) {
+            self.coinId = coinId
+            self.favoritesManager = favoritesManager
+        }
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,6 +31,10 @@ struct CoinDetailView: View {
                     VStack(alignment: .leading) {
                         TopBarView(onBack: {
                             dismiss()
+                        },
+                                   isFavorite: favoritesManager.isFavorite(coin.id),
+                                   toggleFavorite: {
+                            favoritesManager.toggleFavorite(coin: coin)
                         })
                         CoinInfoView(coin: coin)
                         CoinStatsView(coin: coin)
@@ -37,7 +48,7 @@ struct CoinDetailView: View {
                         MinMaxPriceView()
                     }
                 }
-                    
+                
                 TransferButtonView()
             }
             else if let error = viewModel.errorMessage {
@@ -58,6 +69,8 @@ struct CoinDetailView: View {
 struct TopBarView: View{
     
     var onBack: () -> Void
+    var isFavorite: Bool
+    var toggleFavorite: () -> Void
     
     var body: some View{
         
@@ -73,7 +86,7 @@ struct TopBarView: View{
             }
             Spacer()
             Button(action: {
-                // Favorite action
+                toggleFavorite()
             }) {
                 Image(systemName: "heart")
                     .foregroundColor(.gray)
@@ -205,7 +218,7 @@ struct ChartFiltersView: View {
 
 struct CoinChartView: View {
     var prices: [HistoricalPrice]
-
+    
     var body: some View {
         ZStack {
             // Chart Background
@@ -299,6 +312,10 @@ struct LineChartMock: Shape {
 
 struct CoinDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinDetailView(coinId: "eos")
+        let context = PersistenceController.preview.container.viewContext
+        let manager = FavoritesManager(context: context)
+        
+        return CoinDetailView(coinId: "eos", favoritesManager: manager)
+            .environment(\.managedObjectContext, context)
     }
 }
