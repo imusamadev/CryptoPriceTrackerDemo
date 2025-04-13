@@ -213,7 +213,8 @@ struct CryptoListView: View {
                                         symbol: coin.symbol.uppercased(),
                                         value: String(format: "$%.2f", coin.currentPrice),
                                         growth: String(format: "%.2f%%", coin.priceChangePercentage24h),
-                                        color: .blue
+                                        color: .blue,
+                                        imageName: coin.image
                                     )
                                 }
                     }
@@ -229,12 +230,32 @@ struct CryptoListView: View {
         var value: String
         var growth: String
         var color: Color
+        var imageName: String
         
         var body: some View {
             HStack {
-                Circle()
-                    .fill(color)
-                    .frame(width: 32, height: 32)
+                AsyncImage(url: URL(string: imageName)) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .frame(width: 32, height: 32)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 32, height: 32)
+                                        .clipShape(Circle())
+                                case .failure:
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 32, height: 32)
+                                        .foregroundColor(.gray)
+                                @unknown default:
+                                    EmptyView()
+                                }
+                            }
+                
                 VStack(alignment: .leading) {
                     Text(name)
                         .foregroundColor(.white)

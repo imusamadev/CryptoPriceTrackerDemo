@@ -23,12 +23,24 @@ class CryptoService {
         return Observable.create { observer in
             let request = AF.request(url, parameters: parameters)
                 .validate()
-                .responseDecodable(of: [CryptoCurrency].self) { response in
+                .responseData { response in
                     switch response.result {
-                    case .success(let currencies):
-                        observer.onNext(currencies)
-                        observer.onCompleted()
+                    case .success(let data):
+                        // Print raw JSON response
+                        if let jsonString = String(data: data, encoding: .utf8) {
+                            print("Raw JSON response:\n\(jsonString)")
+                        }
+                        
+                        do {
+                            let decoded = try JSONDecoder().decode([CryptoCurrency].self, from: data)
+                            observer.onNext(decoded)
+                            observer.onCompleted()
+                        } catch {
+                            print("Decoding error: \(error)")
+                            observer.onError(error)
+                        }
                     case .failure(let error):
+                        print("Request error: \(error)")
                         observer.onError(error)
                     }
                 }

@@ -11,6 +11,7 @@ struct CryptoCurrency: Decodable, Identifiable {
     let id: String
     let symbol: String
     let name: String
+    let image: String
     let currentPrice: Double
     let marketCap: Double
     let totalVolume: Double
@@ -20,6 +21,7 @@ struct CryptoCurrency: Decodable, Identifiable {
         case id
         case symbol
         case name
+        case image
         case currentPrice = "current_price"
         case marketCap = "market_cap"
         case totalVolume = "total_volume"
