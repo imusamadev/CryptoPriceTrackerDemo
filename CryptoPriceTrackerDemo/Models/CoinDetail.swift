@@ -10,14 +10,22 @@ struct CoinDetail: Codable {
     let id: String
     let symbol: String
     let name: String
+    let image: CoinImage
     let marketCapRank: Int?
     let marketData: MarketData
 
     enum CodingKeys: String, CodingKey {
         case id, symbol, name
+        case image
         case marketCapRank = "market_cap_rank"
         case marketData = "market_data"
     }
+}
+
+struct CoinImage: Codable {
+    let thumb: String
+    let small: String
+    let large: String
 }
 
 struct MarketData: Codable {

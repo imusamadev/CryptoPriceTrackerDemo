@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CryptoListView: View {
     @StateObject private var viewModel = CryptoListViewModel()
+    @State private var isRefreshing = false
     
     var body: some View {
         NavigationStack {
@@ -22,12 +23,34 @@ struct CryptoListView: View {
                         MarketStatisticsView(viewModel: viewModel)
                     }
                 }
+                .refreshable {
+                    await refreshData()  // Pull to refresh triggers this
+                }
+                
                 CustomTabBar()
             }
             .background(Color.black.edgesIgnoringSafeArea(.all))
             .navigationBarHidden(true)
             .navigationBarBackButtonHidden(true)
         }
+    }
+    
+    private func refreshData() async {
+        isRefreshing = true  // Indicate refreshing state
+        
+        viewModel.fetchData()
+        
+        // Update the refreshing state once data is loaded
+        DispatchQueue.main.async {
+            isRefreshing = false
+        }
+        //            await Task.detached {
+        //                viewModel.fetchData()  // Fetch the latest data from the service
+        //
+        //                DispatchQueue.main.async {
+        //                    isRefreshing = false  // Stop refreshing once data is loaded
+        //                }
+        //            }
     }
     
     // MARK: - Top Bar
@@ -235,26 +258,26 @@ struct CryptoListView: View {
         var body: some View {
             HStack {
                 AsyncImage(url: URL(string: imageName)) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                        .frame(width: 32, height: 32)
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 32, height: 32)
-                                        .clipShape(Circle())
-                                case .failure:
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 32, height: 32)
-                                        .foregroundColor(.gray)
-                                @unknown default:
-                                    EmptyView()
-                                }
-                            }
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                            .frame(width: 32, height: 32)
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 32, height: 32)
+                            .clipShape(Circle())
+                    case .failure:
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 32, height: 32)
+                            .foregroundColor(.gray)
+                    @unknown default:
+                        EmptyView()
+                    }
+                }
                 
                 VStack(alignment: .leading) {
                     Text(name)

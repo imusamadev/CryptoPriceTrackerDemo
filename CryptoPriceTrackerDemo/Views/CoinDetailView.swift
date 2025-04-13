@@ -37,6 +37,7 @@ struct CoinDetailView: View {
                         MinMaxPriceView()
                     }
                 }
+                    
                 TransferButtonView()
             }
             else if let error = viewModel.errorMessage {
@@ -89,10 +90,23 @@ struct CoinInfoView: View {
     
     var body: some View {
         HStack(spacing: 16) {
-            Image(coin.id) // Ensure image exists in Assets with the coin id
-                .resizable()
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
+            AsyncImage(url: URL(string: coin.image.small)) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image.resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                case .failure:
+                    Image(systemName: "photo")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                @unknown default:
+                    EmptyView()
+                }
+            }
             
             VStack(alignment: .leading) {
                 Text("\(coin.name) / \(coin.symbol.uppercased())")
@@ -193,11 +207,12 @@ struct CoinChartView: View {
     var prices: [HistoricalPrice]
 
     var body: some View {
-        ZStack(alignment: .bottom) {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(LinearGradient(colors: [.black, .gray], startPoint: .top, endPoint: .bottom))
-                .frame(height: 220)
-
+        ZStack {
+            // Chart Background
+            RoundedRectangle(cornerRadius: 18)
+                .fill(Color.black)
+                .frame(height: 365)
+            
             if prices.isEmpty {
                 Text("No data available")
                     .foregroundColor(.white)
@@ -208,16 +223,25 @@ struct CoinChartView: View {
                             x: .value("Date", price.date),
                             y: .value("Price", price.price)
                         )
-                        .foregroundStyle(Color.green)
                         .interpolationMethod(.monotone)
+                        .foregroundStyle(Color.blue)
+                        .lineStyle(StrokeStyle(lineWidth: 2))
+                        
+                        AreaMark(
+                            x: .value("Date", price.date),
+                            y: .value("Price", price.price)
+                        )
+                        .interpolationMethod(.monotone)
+                        .foregroundStyle(
+                            .linearGradient(
+                                colors: [Color.blue.opacity(0.4), Color.clear],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
                     }
                 }
-                .chartXAxis(.hidden)
-                .chartYAxis {
-                    AxisMarks(position: .leading)
-                }
                 .frame(height: 365)
-                .padding(.horizontal)
             }
         }
         .padding(.horizontal)
@@ -229,14 +253,13 @@ struct MinMaxPriceView: View {
         HStack {
             Text("MIN $86.21")
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
             Spacer()
             Text("MAX $137.88")
                 .font(.caption)
-                .foregroundColor(.gray)
+                .foregroundColor(.white)
         }
-        .padding(.horizontal, 24)
-        .padding(.bottom, 12)
+        .padding()
     }
 }
 
@@ -258,8 +281,6 @@ struct TransferButtonView: View {
     }
 }
 
-
-// Mock Line Chart Shape
 struct LineChartMock: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -278,6 +299,6 @@ struct LineChartMock: Shape {
 
 struct CoinDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        CoinDetailView(coinId: "0")
+        CoinDetailView(coinId: "eos")
     }
 }

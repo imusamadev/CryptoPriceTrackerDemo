@@ -61,5 +61,6 @@ class CoinDetailViewModel: ObservableObject {
                 )
                 .disposed(by: disposeBag)
         }
+    
 }
 
