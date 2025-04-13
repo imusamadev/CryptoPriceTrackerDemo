@@ -86,7 +86,6 @@ struct CryptoListView: View {
                         .foregroundColor(.green)
                         .font(.caption)
                 }
-                
             }
             .padding(.horizontal)
         }

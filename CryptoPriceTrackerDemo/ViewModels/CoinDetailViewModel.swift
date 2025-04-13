@@ -45,7 +45,6 @@ class CoinDetailViewModel: ObservableObject {
             .disposed(by: disposeBag)
     }
     
-    
     func loadHistoricalPrices(id: String, days: Int = 7) {
             isChartLoading = true
             service.fetchHistoricalPrices(for: id, days: days)

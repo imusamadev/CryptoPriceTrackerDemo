@@ -7,62 +7,71 @@
 
 import Foundation
 import RxSwift
+import Alamofire
 
 class CoinGeckoService {
+    
     func fetchCoinDetail(by id: String) -> Single<CoinDetail> {
         return Single.create { single in
-            guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/\(id)") else {
-                single(.failure(NSError(domain: "Invalid URL", code: -1)))
-                return Disposables.create()
-            }
+            let url = "https://api.coingecko.com/api/v3/coins/\(id)"
             
-            let task = URLSession.shared.dataTask(with: url) { data, _, error in
-                if let error = error {
-                    single(.failure(error))
-                    return
+            let request = AF.request(url)
+                .validate()
+                .responseDecodable(of: CoinDetail.self) { response in
+                    switch response.result {
+                    case .success(let coinDetail):
+                        single(.success(coinDetail))
+                    case .failure(let error):
+                        single(.failure(error))
+                    }
                 }
-                
-                guard let data = data else {
-                    single(.failure(NSError(domain: "No data", code: -1)))
-                    return
-                }
-                
-                do {
-                    let coinDetail = try JSONDecoder().decode(CoinDetail.self, from: data)
-                    single(.success(coinDetail))
-                } catch {
-                    single(.failure(error))
-                }
-            }
-            
-            task.resume()
             
             return Disposables.create {
-                task.cancel()
+                request.cancel()
             }
         }
     }
-}
-
-extension CoinGeckoService {
+    
     func fetchHistoricalPrices(for id: String, days: Int = 7) -> Observable<[HistoricalPrice]> {
-        guard let url = URL(string: "https://api.coingecko.com/api/v3/coins/\(id)/market_chart?vs_currency=usd&days=\(days)") else {
-            return Observable.just([])
-        }
+        let url = "https://api.coingecko.com/api/v3/coins/\(id)/market_chart"
+        let parameters: Parameters = [
+            "vs_currency": "usd",
+            "days": days
+        ]
         
-        return URLSession.shared.rx.data(request: URLRequest(url: url))
-            .map { data -> [HistoricalPrice] in
-                guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
-                      let prices = json["prices"] as? [[Double]] else {
-                    return []
+        return Observable.create { observer in
+            let request = AF.request(url, parameters: parameters)
+                .validate()
+                .responseJSON { response in
+                    switch response.result {
+                    case .success(let value):
+                        guard
+                            let json = value as? [String: Any],
+                            let prices = json["prices"] as? [[Double]]
+                        else {
+                            observer.onNext([])
+                            observer.onCompleted()
+                            return
+                        }
+                        
+                        let historicalPrices = prices.compactMap { entry -> HistoricalPrice? in
+                            guard entry.count == 2 else { return nil }
+                            let timestamp = entry[0] / 1000
+                            let date = Date(timeIntervalSince1970: timestamp)
+                            return HistoricalPrice(date: date, price: entry[1])
+                        }
+                        
+                        observer.onNext(historicalPrices)
+                        observer.onCompleted()
+                        
+                    case .failure(let error):
+                        observer.onError(error)
+                    }
                 }
-                
-                return prices.compactMap { entry in
-                    guard entry.count == 2 else { return nil }
-                    let timestamp = entry[0] / 1000 // ms to seconds
-                    let date = Date(timeIntervalSince1970: timestamp)
-                    return HistoricalPrice(date: date, price: entry[1])
-                }
+            
+            return Disposables.create {
+                request.cancel()
             }
+        }
     }
 }

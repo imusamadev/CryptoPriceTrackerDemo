@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		048C64942DAB1F26007A1545 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 048C64932DAB1F26007A1545 /* RxCocoa */; };
 		048C64962DAB1F26007A1545 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 048C64952DAB1F26007A1545 /* RxSwift */; };
+		048C64A22DAB430A007A1545 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 048C64A12DAB430A007A1545 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048C64A22DAB430A007A1545 /* Alamofire in Frameworks */,
 				048C64962DAB1F26007A1545 /* RxSwift in Frameworks */,
 				048C64942DAB1F26007A1545 /* RxCocoa in Frameworks */,
 			);
@@ -121,6 +123,7 @@
 			packageProductDependencies = (
 				048C64932DAB1F26007A1545 /* RxCocoa */,
 				048C64952DAB1F26007A1545 /* RxSwift */,
+				048C64A12DAB430A007A1545 /* Alamofire */,
 			);
 			productName = CryptoPriceTrackerDemo;
 			productReference = 0406E6972DAA545000A87CD8 /* CryptoPriceTrackerDemo.app */;
@@ -206,6 +209,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				048C64A02DAB430A007A1545 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 0406E6982DAA545000A87CD8 /* Products */;
@@ -574,6 +578,14 @@
 				minimumVersion = 6.9.0;
 			};
 		};
+		048C64A02DAB430A007A1545 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -586,6 +598,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 048C64922DAB1F26007A1545 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		048C64A12DAB430A007A1545 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 048C64A02DAB430A007A1545 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
